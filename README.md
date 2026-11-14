@@ -1,4 +1,6 @@
-# Awesome-QA-Metrics-Test-Execution-Dashboard
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome QA Metrics & Test Execution Dashboard Banner" width="100%">
+</p>
 
 # Awesome QA Metrics & Test Execution Dashboard
 

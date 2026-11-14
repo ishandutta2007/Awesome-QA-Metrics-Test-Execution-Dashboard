@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="360">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c14"/>
+      <stop offset="50%" stop-color="#0c1524"/>
+      <stop offset="100%" stop-color="#080e18"/>
+    </linearGradient>
+
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="40%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="chartBarGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.7" opacity="0.65"/>
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .pulse-circle {
+      animation: pulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.25; }
+      100% { transform: scale(1.15); opacity: 0.45; }
+    }
+    .float-card {
+      animation: float 5s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+    .flow-line {
+      stroke-dasharray: 8 6;
+      animation: dash 22s linear infinite;
+    }
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -1000;
+      }
+    }
+    .chart-pulse {
+      animation: barGrow 3s ease-in-out infinite alternate;
+      transform-origin: bottom;
+    }
+    @keyframes barGrow {
+      0% { transform: scaleY(0.92); }
+      100% { transform: scaleY(1.05); }
+    }
+    .pill-badge {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .title-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 38px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      fill: #94a3b8;
+    }
+    .badge-icon {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .mono-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 500;
+    }
+  </style>
+
+  <!-- Deep Canvas Base -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGrad)"/>
+  <rect width="1200" height="360" rx="16" fill="url(#grid)"/>
+
+  <!-- Ambient Pulsing Glow Orbs (Background layer) -->
+  <g class="pulse-circle" style="transform-origin: 180px 180px;">
+    <circle cx="180" cy="180" r="160" fill="url(#accentGlow)" filter="url(#glow)"/>
+  </g>
+  <g class="pulse-circle" style="transform-origin: 1020px 180px; animation-delay: -2s;">
+    <circle cx="1020" cy="180" r="150" fill="#10b981" opacity="0.12" filter="url(#glow)"/>
+  </g>
+
+  <!-- Dynamic Animated Metric Wave / Pipeline Lines (Subtle Background Flow) -->
+  <g stroke="#334155" stroke-width="1.2" fill="none" opacity="0.4">
+    <path d="M 40 85 Q 260 25 500 65 T 1160 90" class="flow-line"/>
+    <path d="M 40 275 Q 280 335 520 295 T 1160 265" class="flow-line"/>
+    <path d="M 60 180 C 220 120 380 230 550 180 S 920 130 1140 180" stroke="#38bdf8" stroke-width="1" opacity="0.25" class="flow-line"/>
+  </g>
+
+  <!-- Left Side Dynamic QA Widgets (Positioned safely off-center) -->
+  <g class="float-card" style="transform-origin: 130px 110px;">
+    <!-- Test Execution Card -->
+    <rect x="45" y="70" width="180" height="74" rx="10" fill="#111c2e" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="57" y="82" width="6" height="6" rx="3" fill="#34d399"/>
+    <text x="69" y="88" fill="#e2e8f0" class="mono-text">SUITE RUN #4182</text>
+    <text x="57" y="112" fill="#34d399" font-family="sans-serif" font-weight="700" font-size="18px">99.4%</text>
+    <text x="114" y="112" fill="#94a3b8" font-family="sans-serif" font-size="11px">Pass Rate</text>
+    <rect x="57" y="125" width="156" height="5" rx="2.5" fill="#1e293b"/>
+    <rect x="57" y="125" width="142" height="5" rx="2.5" fill="#34d399"/>
+  </g>
+
+  <g class="float-card" style="transform-origin: 125px 235px; animation-delay: -3s;">
+    <!-- Flakiness Tracker Pill -->
+    <rect x="45" y="220" width="175" height="58" rx="10" fill="#111c2e" stroke="#1e293b" stroke-width="1.2"/>
+    <circle cx="65" cy="249" r="10" fill="#0f766e" fill-opacity="0.3"/>
+    <path d="M 61 249 L 64 252 L 69 246" stroke="#2dd4bf" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="85" y="243" fill="#94a3b8" class="pill-badge">Flakiness Index</text>
+    <text x="85" y="261" fill="#38bdf8" font-family="sans-serif" font-weight="700" font-size="13px">0.12% (Stable)</text>
+  </g>
+
+  <!-- Right Side Dynamic QA Widgets (Positioned safely off-center) -->
+  <g class="float-card" style="transform-origin: 1060px 110px; animation-delay: -1.5s;">
+    <!-- Mini Histogram / Velocity Chart Widget -->
+    <rect x="975" y="70" width="180" height="74" rx="10" fill="#111c2e" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="987" y="88" fill="#e2e8f0" class="mono-text">EXECUTION VELOCITY</text>
+    <g class="chart-pulse" transform="translate(987, 98)">
+      <rect x="0" y="8" width="12" height="22" rx="2" fill="url(#chartBarGrad)"/>
+      <rect x="18" y="4" width="12" height="26" rx="2" fill="url(#chartBarGrad)"/>
+      <rect x="36" y="12" width="12" height="18" rx="2" fill="url(#chartBarGrad)"/>
+      <rect x="54" y="2" width="12" height="28" rx="2" fill="#34d399"/>
+      <rect x="72" y="6" width="12" height="24" rx="2" fill="url(#chartBarGrad)"/>
+      <rect x="90" y="0" width="12" height="30" rx="2" fill="#34d399"/>
+      <text x="110" y="22" fill="#38bdf8" font-family="sans-serif" font-weight="700" font-size="13px">42k/hr</text>
+    </g>
+  </g>
+
+  <g class="float-card" style="transform-origin: 1065px 235px; animation-delay: -4.5s;">
+    <!-- Release Readiness Badge -->
+    <rect x="975" y="220" width="180" height="58" rx="10" fill="#111c2e" stroke="#1e293b" stroke-width="1.2"/>
+    <circle cx="997" cy="249" r="5" fill="#34d399"/>
+    <circle cx="997" cy="249" r="9" stroke="#34d399" stroke-width="1" fill="none" opacity="0.4"/>
+    <text x="1015" y="243" fill="#94a3b8" class="pill-badge">Release Readiness</text>
+    <text x="1015" y="261" fill="#34d399" font-family="sans-serif" font-weight="700" font-size="13px">PRODUCTION READY</text>
+  </g>
+
+  <!-- Center Foreground Content Container (Completely unobstructed, high-contrast foreground) -->
+  <g id="foreground-content">
+    <!-- Top Category Tag -->
+    <rect x="460" y="46" width="280" height="28" rx="14" fill="#0369a1" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/>
+    <text x="600" y="64" text-anchor="middle" fill="#38bdf8" class="badge-icon">⚡ TEST ANALYTICS &amp; QA OBSERVABILITY</text>
+
+    <!-- Main Title -->
+    <text x="600" y="136" text-anchor="middle" fill="url(#textGrad)" class="title-text">
+      Awesome QA Metrics &amp; Test Execution Dashboard
+    </text>
+
+    <!-- Subtitle / Mission -->
+    <text x="600" y="176" text-anchor="middle" class="subtitle-text">
+      Curated commercial test analytics platforms, open-source reporting dashboards &amp; quality insights
+    </text>
+
+    <!-- Stat/Highlight Badges Row -->
+    <g transform="translate(295, 218)">
+      <!-- Pill 1: SaaS / Hosted -->
+      <rect x="0" y="0" width="185" height="36" rx="8" fill="#111c2e" stroke="#334155" stroke-width="1"/>
+      <text x="92" y="22" text-anchor="middle" fill="#38bdf8" class="pill-badge">☁️ SaaS &amp; Cloud Insights</text>
+
+      <!-- Pill 2: Open Source -->
+      <rect x="205" y="0" width="195" height="36" rx="8" fill="#111c2e" stroke="#334155" stroke-width="1"/>
+      <text x="302" y="22" text-anchor="middle" fill="#818cf8" class="pill-badge">📊 Open-Source Dashboards</text>
+
+      <!-- Pill 3: Flakiness & Velocity -->
+      <rect x="420" y="0" width="190" height="36" rx="8" fill="#111c2e" stroke="#334155" stroke-width="1"/>
+      <text x="515" y="22" text-anchor="middle" fill="#34d399" class="pill-badge">🎯 Flake &amp; Release Metrics</text>
+    </g>
+
+    <!-- Bottom Accent Border Line -->
+    <rect x="420" y="292" width="360" height="2" rx="1" fill="url(#textGrad)" opacity="0.65"/>
+  </g>
+</svg>
